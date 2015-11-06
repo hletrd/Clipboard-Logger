@@ -48,15 +48,20 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub lst_DblClick()
-Clipboard.Clear
-Clipboard.SetText (lst.List(lst.ListIndex))
-MsgBox "º¹»çµÊ", vbInformation, "Clipboard Logger"
+On Error GoTo ErrHandler
+    Clipboard.Clear
+    Clipboard.SetText (lst.List(lst.ListIndex))
+    MsgBox "º¹»çµÊ", vbInformation, "Clipboard Logger"
+ErrHandler:
+    MsgBox "¿¡·¯", vbExclamation, "Clipboard Logger"
 End Sub
 
 Private Sub tmrMain_Timer()
+On Error GoTo ErrHandler
 Static clip As String
 If clip <> Clipboard.GetText Then
     lst.AddItem (Clipboard.GetText)
     clip = Clipboard.GetText
 End If
+ErrHandler:
 End Sub
