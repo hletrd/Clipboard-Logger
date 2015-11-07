@@ -52,6 +52,7 @@ On Error GoTo ErrHandler
     Clipboard.Clear
     Clipboard.SetText (lst.List(lst.ListIndex))
     MsgBox "º¹»çµÊ", vbInformation, "Clipboard Logger"
+Exit Sub
 ErrHandler:
     MsgBox "¿¡·¯", vbExclamation, "Clipboard Logger"
 End Sub
